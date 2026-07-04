@@ -172,8 +172,15 @@ public class MainActivity extends Activity {
     }
 
     @Override
-    public void onBackPressed() {
-        if (webView != null && webView.canGoBack()) webView.goBack();
-        else super.onBackPressed();
+public void onBackPressed() {
+    if (webView != null && webView.canGoBack()) {
+        webView.goBack();
+    } else {
+        new android.app.AlertDialog.Builder(this)
+            .setTitle("Exit Star Chat?")
+            .setMessage("Kya aap app band karna chahte hain?")
+            .setPositiveButton("Yes", (dialog, which) -> finish())
+            .setNegativeButton("No", null)
+            .show();
     }
 }
